@@ -8,12 +8,23 @@ info:
     name: "Vonage Business Cloud Support"
     url: "https://businesssupport.vonage.com/contactus"
   termsOfService: "https://www.vonage.com/business/legal-policy-center/business-cloud/tos"
+tags:
+  - name: company call recording
+    description: 'Company Call Recording lets administrators schedule call recording rules and recording parameters for your entire office.'
+  - name: on-demand call recording
+    description: 'On-Demand Call Recording lets employees decide when to record calls. It’s a particularly useful phone recording system for businesses when you need to verify the details of a conversation or when it’s essential that you capture accurate notes'
+  - name: export job
+    description: 'Export jobs let users download recordings in bulk based on search criteria. Export jobs are initiated from the corresponding company and on-demand call recording export endpoints.'
+  - name: download
+    description: 'Download audio files for company and on-demand call recordings.'
 paths:
   "/api/accounts/{account_id}/company_call_recordings":
     get:
       operationId: getCCRecordings
       summary: Get company call recordings
       description: Get company call recordings for an account
+      tags:
+        - company call recording
       parameters:
         - $ref: "#/components/parameters/AccountID"
         - $ref: "#/components/parameters/Extension"
@@ -42,6 +53,8 @@ paths:
       operationId: deleteCCRecordings
       summary: Delete multiple company call recordings
       description: Delete multiple company call recordings for an account
+      tags:
+        - company call recording
       parameters:
         - $ref: "#/components/parameters/AccountID"
         - $ref: "#/components/parameters/Extension"
@@ -68,6 +81,8 @@ paths:
       operationId: getCCRecording
       summary: Get company call recording
       description: Get a single company call recording for an account
+      tags:
+        - company call recording
       parameters:
         - $ref: "#/components/parameters/AccountID"
         - $ref: "#/components/parameters/RecordingID"
@@ -88,6 +103,8 @@ paths:
       operationId: deleteCCRecording
       summary: Delete company call recording
       description: Delete a single company call recording for an account
+      tags:
+        - company call recording
       parameters:
         - $ref: "#/components/parameters/AccountID"
         - $ref: "#/components/parameters/RecordingID"
@@ -105,6 +122,8 @@ paths:
       operationId: createCCRExportJob
       summary: Create a company call recording export job
       description: Create a company call recording export job for an account
+      tags:
+        - company call recording
       parameters:
         - $ref: "#/components/parameters/AccountID"
         - $ref: "#/components/parameters/Extension"
@@ -134,6 +153,8 @@ paths:
       operationId: getODCRecordings
       summary: Get on-demand call recordings
       description: Get on-demand call recordings for an account user
+      tags:
+        - on-demand call recording
       parameters:
         - $ref: "#/components/parameters/AccountID"
         - $ref: "#/components/parameters/UserID"
@@ -163,6 +184,8 @@ paths:
       operationId: DeleteODCRecordings
       summary: Delete multiple on-demand call recordings
       description: Delete multiple on-demand call recordings for an account user
+      tags:
+        - on-demand call recording
       parameters:
         - $ref: "#/components/parameters/AccountID"
         - $ref: "#/components/parameters/UserID"
@@ -189,6 +212,8 @@ paths:
       operationId: getODCRecording
       summary: Get on-demand call recording
       description: Get a single on-demand call recording for an account user
+      tags:
+        - on-demand call recording
       parameters:
         - $ref: "#/components/parameters/AccountID"
         - $ref: "#/components/parameters/UserID"
@@ -210,6 +235,8 @@ paths:
       operationId: deleteODCRecording
       summary: Delete on-demand call recording
       description: Delete a single on-demand call recording for an account user
+      tags:
+        - on-demand call recording
       parameters:
         - $ref: "#/components/parameters/AccountID"
         - $ref: "#/components/parameters/UserID"
@@ -228,6 +255,8 @@ paths:
       operationId: createODCRExportJob
       summary: Create an on-demand call recording export job
       description: Create an on-demand call recording export job for an account user
+      tags:
+        - on-demand call recording
       parameters:
         - $ref: "#/components/parameters/AccountID"
         - $ref: "#/components/parameters/UserID"
@@ -258,6 +287,8 @@ paths:
       operationId: getCCRExportJobs
       summary: Get call recording export jobs
       description: Get call recording export jobs for an account user
+      tags:
+        - export job
       parameters:
         - $ref: "#/components/parameters/AccountID"
         - $ref: "#/components/parameters/UserID"
@@ -280,6 +311,8 @@ paths:
       operationId: getCCRExportJob
       summary: Get call recording export job
       description: Get a single call recording export job for an account user
+      tags:
+        - export job
       parameters:
         - $ref: "#/components/parameters/AccountID"
         - $ref: "#/components/parameters/UserID"
@@ -302,6 +335,8 @@ paths:
       operationId: downloadCCR
       summary: Download call recording
       description: Download a call recording audio file
+      tags:
+        - download
       parameters:
         - $ref: "#/components/parameters/RecordingID"
       responses:
