@@ -25,6 +25,8 @@ paths:
       description: Get company call recordings for an account
       tags:
         - company call recording
+      security:
+        - bearerAuth: []
       parameters:
         - $ref: "#/components/parameters/AccountID"
         - $ref: "#/components/parameters/Extension"
