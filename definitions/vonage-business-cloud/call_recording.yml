@@ -29,15 +29,18 @@ paths:
         - bearerAuth: []
       parameters:
         - $ref: "#/components/parameters/AccountID"
-        - $ref: "#/components/parameters/Extension"
-        - $ref: "#/components/parameters/StartLte"
-        - $ref: "#/components/parameters/StartGte"
         - $ref: "#/components/parameters/CallDirection"
         - $ref: "#/components/parameters/CallerID"
         - $ref: "#/components/parameters/Cnam"
         - $ref: "#/components/parameters/Dnis"
-        - $ref: "#/components/parameters/DurationLte"
         - $ref: "#/components/parameters/DurationGte"
+        - $ref: "#/components/parameters/DurationLte"
+        - $ref: "#/components/parameters/Extension"
+        - $ref: "#/components/parameters/Order"
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/PageSize"
+        - $ref: "#/components/parameters/StartGte"
+        - $ref: "#/components/parameters/StartLte"
       responses:
         200:
           description: OK
@@ -133,7 +136,6 @@ paths:
         - bearerAuth: []
       parameters:
         - $ref: "#/components/parameters/AccountID"
-        - $ref: "#/components/parameters/Extension"
       requestBody:
         required: true
         content:
@@ -165,15 +167,18 @@ paths:
       parameters:
         - $ref: "#/components/parameters/AccountID"
         - $ref: "#/components/parameters/UserID"
-        - $ref: "#/components/parameters/Extension"
-        - $ref: "#/components/parameters/StartLte"
-        - $ref: "#/components/parameters/StartGte"
         - $ref: "#/components/parameters/CallDirection"
         - $ref: "#/components/parameters/CallerID"
         - $ref: "#/components/parameters/Cnam"
         - $ref: "#/components/parameters/Dnis"
-        - $ref: "#/components/parameters/DurationLte"
         - $ref: "#/components/parameters/DurationGte"
+        - $ref: "#/components/parameters/DurationLte"
+        - $ref: "#/components/parameters/Extension"
+        - $ref: "#/components/parameters/Order"
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/PageSize"
+        - $ref: "#/components/parameters/StartGte"
+        - $ref: "#/components/parameters/StartLte"
       responses:
         200:
           description: OK
@@ -477,6 +482,33 @@ components:
       required: false
       schema:
         type: string
+    Order:
+      name: order
+      in: query
+      description: Sort records by field value
+      required: false
+      schema:
+        type: string
+      example: start:DESC
+      default: start:DESC
+    Page:
+      name: page
+      in: query
+      descripion: Requested page number
+      required: false
+      schema:
+        type: integer
+      example: 1
+      defaul: 1
+    PageSize:
+      name: page_size
+      in: query
+      descripion: Requested page size
+      required: false
+      schema:
+        type: integer
+      example: 10
+      defaul: 10
   schemas:
     Pagination:
       type: object
@@ -683,18 +715,6 @@ components:
     Filters:
       type: object
       properties:
-        extension:
-          description: Filter records by extension number
-          example: 999
-          type: string
-        start:lte:
-          description: Filter records by start date (less than or equal to)
-          example: "2019-01-01 00:00:00"
-          type: string
-        start:gte:
-          description: Filter records by start date (greater than or equal to)
-          example: "2019-01-01 00:00:00"
-          type: string
         call_direction:
           description: Filter records by call direction
           example: INBOUND
@@ -712,11 +732,23 @@ components:
         dnis:
           description: Filter records by DNIS
           type: string
-        duration:lte:
-          description: Filter records by duration in milliseconds (less than or equal to)
-          example: 60000
-          type: integer
         duration:gte:
           description: Filter records by duration in milliseconds (greater than or equal to)
           example: 60000
           type: integer
+        duration:lte:
+          description: Filter records by duration in milliseconds (less than or equal to)
+          example: 60000
+          type: integer
+        extension:
+          description: Filter records by extension number
+          example: 999
+          type: string
+        start:gte:
+          description: Filter records by start date (greater than or equal to)
+          example: "2019-01-01 00:00:00"
+          type: string
+        start:lte:
+          description: Filter records by start date (less than or equal to)
+          example: "2019-01-01 00:00:00"
+          type: string
