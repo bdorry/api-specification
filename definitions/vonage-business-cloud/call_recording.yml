@@ -416,7 +416,7 @@ components:
       name: start:lte
       in: query
       description: Filter records by start date (less than or equal to)
-      example: 2019-01-01 00:00:00
+      example: "2019-01-01T00:00:00+0000"
       required: false
       schema:
         type: string
@@ -424,7 +424,7 @@ components:
       name: start:gte
       in: query
       description: Filter records by start date (greater than or equal to)
-      example: 2019-01-01 00:00:00
+      example: "2019-01-01T00:00:00+0000"
       required: false
       schema:
         type: string
