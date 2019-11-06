@@ -30,6 +30,7 @@ paths:
       parameters:
         - $ref: "#/components/parameters/AccountID"
         - $ref: "#/components/parameters/CallDirection"
+        - $ref: "#/components/parameters/CallID"
         - $ref: "#/components/parameters/CallerID"
         - $ref: "#/components/parameters/Cnam"
         - $ref: "#/components/parameters/Dnis"
@@ -168,6 +169,7 @@ paths:
         - $ref: "#/components/parameters/AccountID"
         - $ref: "#/components/parameters/UserID"
         - $ref: "#/components/parameters/CallDirection"
+        - $ref: "#/components/parameters/CallID"
         - $ref: "#/components/parameters/CallerID"
         - $ref: "#/components/parameters/Cnam"
         - $ref: "#/components/parameters/Dnis"
@@ -447,6 +449,13 @@ components:
       required: false
       schema:
         type: string
+    CallID:
+      name: call_id
+      in: query
+      description: Filter records by Call ID
+      required: false
+      schema:
+        type: string
     Cnam:
       name: cnam
       in: query
@@ -489,26 +498,26 @@ components:
       required: false
       schema:
         type: string
+        default: start:DESC
       example: start:DESC
-      default: start:DESC
     Page:
       name: page
       in: query
-      descripion: Requested page number
+      description: Requested page number
       required: false
       schema:
         type: integer
+        default: 1
       example: 1
-      defaul: 1
     PageSize:
       name: page_size
       in: query
-      descripion: Requested page size
+      description: Requested page size
       required: false
       schema:
         type: integer
+        default: 10
       example: 10
-      defaul: 10
   schemas:
     Pagination:
       type: object
@@ -567,6 +576,9 @@ components:
           type: string
           description: Direction of the recorded call
           example: "INBOUND"
+        call_id:
+          type: string
+          description: Call ID of the recorded call
         caller_id:
           type: string
           description: Caller ID of the caller of the recorded call
