@@ -741,6 +741,9 @@ components:
             - INBOUND
             - OUTBOUND
             - INTRA_PBX
+        call_id:
+          description: Filter records by Call ID
+          type: string
         caller_id:
           description: Filter records by Caller ID
           type: string
