@@ -9,13 +9,13 @@ info:
     url: "https://businesssupport.vonage.com/contactus"
   termsOfService: "https://www.vonage.com/business/legal-policy-center/business-cloud/tos"
 tags:
-  - name: company call recording
+  - name: Company Call Recording
     description: "Company Call Recording lets administrators schedule call recording rules and recording parameters for your entire office."
-  - name: on-demand call recording
+  - name: On-Demand Call Recording
     description: "On-Demand Call Recording lets employees decide when to record calls. It’s a particularly useful phone recording system for businesses when you need to verify the details of a conversation or when it’s essential that you capture accurate notes"
-  - name: export job
+  - name: Export Job
     description: "Export jobs let users download recordings in bulk based on search criteria. Export jobs are initiated from the corresponding company and on-demand call recording export endpoints."
-  - name: download
+  - name: Download
     description: "Download audio files for company and on-demand call recordings."
 paths:
   "/api/accounts/{account_id}/company_call_recordings":
