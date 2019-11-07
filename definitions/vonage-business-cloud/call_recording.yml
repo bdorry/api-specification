@@ -386,12 +386,12 @@ components:
       required: true
       schema:
         type: string
-      description: The account ID
+      description: The account ID. You can use 'self' to refer to the authenticated user's account.
       example: 123456
     UserID:
       name: user_id
       in: path
-      description: The user ID
+      description: The user ID. You can use 'self' to refer to the authenticated user.
       required: true
       example: 123456
       schema:
