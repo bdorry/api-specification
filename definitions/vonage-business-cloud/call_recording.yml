@@ -53,32 +53,6 @@ paths:
           description: Forbidden
         "404":
           description: Not Found
-    delete:
-      operationId: deleteCCRecordings
-      summary: Delete multiple company call recordings
-      description: Delete multiple company call recordings for an account
-      tags:
-        - company call recording
-      security:
-        - bearerAuth: []
-      parameters:
-        - $ref: "#/components/parameters/AccountID"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Filters"
-      responses:
-        "204":
-          description: No Content
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not Found
-
   "/api/accounts/{account_id}/company_call_recordings/{recording_id}":
     get:
       operationId: getCCRecording
@@ -186,32 +160,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/RecordingsHalResponse"
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not Found
-    delete:
-      operationId: DeleteODCRecordings
-      summary: Delete multiple on-demand call recordings
-      description: Delete multiple on-demand call recordings for an account user
-      tags:
-        - on-demand call recording
-      security:
-        - bearerAuth: []
-      parameters:
-        - $ref: "#/components/parameters/AccountID"
-        - $ref: "#/components/parameters/UserID"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Filters"
-      responses:
-        "204":
-          description: No Content
         "401":
           description: Unauthorized
         "403":
