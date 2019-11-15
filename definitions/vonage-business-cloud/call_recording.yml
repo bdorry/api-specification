@@ -520,6 +520,9 @@ components:
         dnis:
           type: string
           description: DNIS of the caller of the recorded call
+        download_url:
+          type: string
+          description: URL to download the recording. This URL requires authorization with your OAuth token.
         duration:
           type: integer
           description: Duration of the recorded call in milliseconds
@@ -614,7 +617,7 @@ components:
           $ref: "#/components/schemas/PaginationSingle"
         download_url:
           type: string
-          description: URL to download the completed export job
+          description: URL to download the completed export job. This URL requires authorization with your OAuth token.
         files_completed:
           type: integer
           description: Number of files completed by the export job
