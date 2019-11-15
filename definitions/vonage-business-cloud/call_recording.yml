@@ -3,7 +3,10 @@ openapi: 3.0.0
 info:
   version: "1.0"
   title: Call Recording API
-  description: The Vonage Business Cloud Call Recording API enables you to manage your company and on-demand call recordings.
+  description: |
+    The Vonage Business Cloud Call Recording API enables you to manage your company and on-demand call recordings.
+
+    Your application must subscribe to the CallRecording API suite to use this API.
   contact:
     name: "Vonage Business Cloud Support"
     url: "https://businesssupport.vonage.com/contactus"
