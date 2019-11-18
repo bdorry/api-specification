@@ -59,7 +59,7 @@ paths:
   "/api/accounts/{account_id}/company_call_recordings/{recording_id}":
     get:
       operationId: getCCRecording
-      summary: Get company call recording
+      summary: Get single company call recording
       description: Get a single company call recording for an account
       tags:
         - company call recording
@@ -172,7 +172,7 @@ paths:
   "/api/accounts/{account_id}/users/{user_id}/call_recordings/{recording_id}":
     get:
       operationId: getODCRecording
-      summary: Get on-demand call recording
+      summary: Get single on-demand call recording
       description: Get a single on-demand call recording for an account user
       tags:
         - on-demand call recording
