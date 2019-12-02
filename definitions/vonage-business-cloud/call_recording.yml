@@ -494,6 +494,7 @@ components:
         download_url:
           type: string
           description: URL to download the recording. This URL requires authorization with your OAuth token.
+          example: 'https://api.vonage.com/t/vbc.prod/call_recording/api/audio/recording/123456'
         duration:
           type: integer
           description: Duration of the recorded call in milliseconds
@@ -625,6 +626,7 @@ components:
         download_url:
           type: string
           description: URL to download the recording. This URL requires authorization with your OAuth token.
+          example: 'https://api.vonage.com/t/vbc.prod/call_recording/api/audio/recording/123456'
         duration:
           type: integer
           description: Duration of the recorded call in milliseconds
