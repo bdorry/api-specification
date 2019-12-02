@@ -381,6 +381,7 @@ components:
       name: caller_id
       in: query
       description: Filter recordings by Caller ID
+      example: 17325550100
       required: false
       schema:
         type: string
@@ -388,6 +389,7 @@ components:
       name: call_id
       in: query
       description: Filter recordings by Call ID
+      example: gEQsJ6WoOOvSkPC8j8Eg8B937n5TssWyGZOE
       required: false
       schema:
         type: string
@@ -395,6 +397,7 @@ components:
       name: cnam
       in: query
       description: Filter recordings by CNAM (Caller ID Name)
+      example: 'JOHN SMITH'
       required: false
       schema:
         type: string
@@ -402,6 +405,7 @@ components:
       name: dnis
       in: query
       description: Filter recordings by DNIS (Dialed Number Identification Service)
+      example: '17325550100'
       required: false
       schema:
         type: string
@@ -474,15 +478,19 @@ components:
         call_id:
           type: string
           description: Call ID of the recorded call
+          example: gEQsJ6WoOOvSkPC8j8Eg8B937n5TssWyGZOE
         caller_id:
           type: string
           description: Caller ID of the caller of the recorded call
+          example: 17325550100
         cnam:
           type: string
           description: CNAM (Caller ID Name) of the caller of the recorded call
+          example: 'JOHN SMITH'
         dnis:
           type: string
           description: DNIS (Dialed Number Identification Service) of the caller of the recorded call
+          example: '17325550100'
         download_url:
           type: string
           description: URL to download the recording. This URL requires authorization with your OAuth token.
@@ -601,15 +609,19 @@ components:
         call_id:
           type: string
           description: Call ID of the recorded call
+          example: gEQsJ6WoOOvSkPC8j8Eg8B937n5TssWyGZOE
         caller_id:
           type: string
           description: Caller ID of the caller of the recorded call
+          example: 17325550100
         cnam:
           type: string
           description: CNAM (Caller ID Name) of the caller of the recorded call
+          example: 'JOHN SMITH'
         dnis:
           type: string
           description: DNIS (Dialed Number Identification Service) of the caller of the recorded call
+          example: '17325550100'
         download_url:
           type: string
           description: URL to download the recording. This URL requires authorization with your OAuth token.
@@ -825,16 +837,20 @@ components:
             - INTRA_PBX
         call_id:
           description: Filter recordings by Call ID
+          example: gEQsJ6WoOOvSkPC8j8Eg8B937n5TssWyGZOE
           type: string
         caller_id:
           description: Filter recordings by Caller ID
           type: string
+          example: 17325550100
         cnam:
           description: Filter recordings by CNAM (Caller ID Name)
           type: string
+          example: 'JOHN SMITH'
         dnis:
           description: Filter recordings by DNIS (Dialed Number Identification Service)
           type: string
+          example: '17325550100'
         duration:gte:
           description: Filter recordings by duration in milliseconds (greater than or equal to)
           example: 60000
