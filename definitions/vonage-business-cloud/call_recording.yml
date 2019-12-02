@@ -394,14 +394,14 @@ components:
     Cnam:
       name: cnam
       in: query
-      description: Filter recordings by CNAM
+      description: Filter recordings by CNAM (Caller ID Name)
       required: false
       schema:
         type: string
     Dnis:
       name: dnis
       in: query
-      description: Filter recordings by DNIS
+      description: Filter recordings by DNIS (Dialed Number Identification Service)
       required: false
       schema:
         type: string
@@ -479,10 +479,10 @@ components:
           description: Caller ID of the caller of the recorded call
         cnam:
           type: string
-          description: CNAM of the caller of the recorded call
+          description: CNAM (Caller ID Name) of the caller of the recorded call
         dnis:
           type: string
-          description: DNIS of the caller of the recorded call
+          description: DNIS (Dialed Number Identification Service) of the caller of the recorded call
         download_url:
           type: string
           description: URL to download the recording. This URL requires authorization with your OAuth token.
@@ -606,10 +606,10 @@ components:
           description: Caller ID of the caller of the recorded call
         cnam:
           type: string
-          description: CNAM of the caller of the recorded call
+          description: CNAM (Caller ID Name) of the caller of the recorded call
         dnis:
           type: string
-          description: DNIS of the caller of the recorded call
+          description: DNIS (Dialed Number Identification Service) of the caller of the recorded call
         download_url:
           type: string
           description: URL to download the recording. This URL requires authorization with your OAuth token.
@@ -830,10 +830,10 @@ components:
           description: Filter recordings by Caller ID
           type: string
         cnam:
-          description: Filter recordings by CNAM
+          description: Filter recordings by CNAM (Caller ID Name)
           type: string
         dnis:
-          description: Filter recordings by DNIS
+          description: Filter recordings by DNIS (Dialed Number Identification Service)
           type: string
         duration:gte:
           description: Filter recordings by duration in milliseconds (greater than or equal to)
