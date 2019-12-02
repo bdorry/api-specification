@@ -49,7 +49,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/RecordingsHalResponse"
+                $ref: "#/components/schemas/CompanyCallRecordingsHalResponse"
         "401":
           description: Unauthorized
         "403":
@@ -74,7 +74,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/RecordingHalResponse"
+                $ref: "#/components/schemas/CompanyCallRecordingHalResponse"
         "401":
           description: Unauthorized
         "403":
@@ -162,7 +162,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/RecordingsHalResponse"
+                $ref: "#/components/schemas/OnDemandCallRecordingsHalResponse"
         "401":
           description: Unauthorized
         "403":
@@ -188,7 +188,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/RecordingHalResponse"
+                $ref: "#/components/schemas/OnDemandCallRecordingHalResponse"
         "401":
           description: Unauthorized
         "403":
@@ -344,7 +344,7 @@ components:
     Extension:
       name: extension
       in: query
-      description: Filter records by extension number
+      description: Filter recordings by extension number
       required: false
       example: 999
       schema:
@@ -352,7 +352,7 @@ components:
     StartLte:
       name: start:lte
       in: query
-      description: Filter records by start date (less than or equal to)
+      description: Filter recordings by start date (less than or equal to)
       example: "2019-01-01T00:00:00+0000"
       required: false
       schema:
@@ -360,7 +360,7 @@ components:
     StartGte:
       name: start:gte
       in: query
-      description: Filter records by start date (greater than or equal to)
+      description: Filter recordings by start date (greater than or equal to)
       example: "2019-01-01T00:00:00+0000"
       required: false
       schema:
@@ -368,7 +368,7 @@ components:
     CallDirection:
       name: call_direction
       in: query
-      description: Filter records by call direction
+      description: Filter recordings by call direction
       example: INBOUND
       required: false
       schema:
@@ -380,56 +380,56 @@ components:
     CallerID:
       name: caller_id
       in: query
-      description: Filter records by Caller ID
+      description: Filter recordings by Caller ID
       required: false
       schema:
         type: string
     CallID:
       name: call_id
       in: query
-      description: Filter records by Call ID
+      description: Filter recordings by Call ID
       required: false
       schema:
         type: string
     Cnam:
       name: cnam
       in: query
-      description: Filter records by CNAM
+      description: Filter recordings by CNAM
       required: false
       schema:
         type: string
     Dnis:
       name: dnis
       in: query
-      description: Filter records by DNIS
+      description: Filter recordings by DNIS
       required: false
       schema:
         type: string
     DurationLte:
       name: duration:lte
       in: query
-      description: Filter records by duration in milliseconds (less than or equal to)
+      description: Filter recordings by duration in milliseconds (less than or equal to)
       required: false
       schema:
         type: integer
     DurationGte:
       name: duration:gte
       in: query
-      description: Filter records by duration in milliseconds (greater than or equal to)
+      description: Filter recordings by duration in milliseconds (greater than or equal to)
       required: false
       schema:
         type: integer
     Status:
       name: status
       in: query
-      description: Filter records by recording status
+      description: Filter export jobs by status
       required: false
       schema:
         type: string
     Order:
       name: order
       in: query
-      description: Sort records by field value
+      description: Sort recordings by field value
       required: false
       schema:
         type: string
@@ -454,59 +454,19 @@ components:
         default: 10
       example: 10
   schemas:
-    Pagination:
-      type: object
-      properties:
-        first:
-          $ref: "#/components/schemas/FirstHref"
-        prev:
-          $ref: "#/components/schemas/PrevHref"
-        self:
-          $ref: "#/components/schemas/SelfHref"
-        next:
-          $ref: "#/components/schemas/NextHref"
-        last:
-          $ref: "#/components/schemas/LastHref"
-    PaginationSingle:
-      type: object
-      properties:
-        self:
-          $ref: "#/components/schemas/SelfHref"
-    FirstHref:
-      type: object
-      properties:
-        href:
-          type: string
-          description: URL to the first page of records
-    PrevHref:
-      type: object
-      properties:
-        href:
-          type: string
-          description: URL to the previous page of records
-    SelfHref:
-      type: object
-      properties:
-        href:
-          type: string
-          description: URL to the current page of records
-    NextHref:
-      type: object
-      properties:
-        href:
-          type: string
-          description: URL to the next page of records
-    LastHref:
-      type: object
-      properties:
-        href:
-          type: string
-          description: URL to the last page of records
-    Recording:
+    CompanyCallRecording:
       type: object
       properties:
         _links:
-          $ref: "#/components/schemas/PaginationSingle"
+          type: object
+          properties:
+            self:
+              type: object
+              properties:
+                href:
+                  type: string
+                  description: URL for the current recording
+                  example: 'https://api.vonage.com/t/vbc.prod/call_recording/api/accounts/123456/company_call_recordings/123456'
         call_direction:
           type: string
           description: Direction of the recorded call
@@ -563,9 +523,9 @@ components:
           format: date-time
           description: Start time of the recorded call
           example: "2019-01-01T00:00:00+0000"
-    RecordingHalResponse:
-      $ref: "#/components/schemas/Recording"
-    RecordingsHalResponse:
+    CompanyCallRecordingHalResponse:
+      $ref: "#/components/schemas/CompanyCallRecording"
+    CompanyCallRecordingsHalResponse:
       type: object
       properties:
         _embedded:
@@ -573,10 +533,173 @@ components:
             recordings:
               type: array
               items:
-                $ref: "#/components/schemas/Recording"
+                $ref: "#/components/schemas/CompanyCallRecording"
           description: A list of recording objects
         _links:
-          $ref: "#/components/schemas/Pagination"
+          type: object
+          properties:
+            first:
+              type: object
+              properties:
+                href:
+                  type: string
+                  description: URL for the first page of recordings
+                  example: 'https://api.vonage.com/t/vbc.prod/call_recording/api/accounts/123456/company_call_recordings?page=0'
+            prev:
+              type: object
+              properties:
+                href:
+                  type: string
+                  description: URL for the previous page of recordings
+                  example: 'https://api.vonage.com/t/vbc.prod/call_recording/api/accounts/123456/company_call_recordings?page=1'
+            self:
+              type: object
+              properties:
+                href:
+                  type: string
+                  description: URL for the current page of recordings
+                  example: 'https://api.vonage.com/t/vbc.prod/call_recording/api/accounts/123456/company_call_recordings?page=2'
+            next:
+              type: object
+              properties:
+                href:
+                  type: string
+                  description: URL for the next page of recordings
+                  example: 'https://api.vonage.com/t/vbc.prod/call_recording/api/accounts/123456/company_call_recordings?page=3'
+            last:
+              type: object
+              properties:
+                href:
+                  type: string
+                  description: URL for the last page of recordings
+                  example: 'https://api.vonage.com/t/vbc.prod/call_recording/api/accounts/123456/company_call_recordings?page=4'
+        page:
+          type: integer
+        page_size:
+          type: integer
+        total_items:
+          type: integer
+        total_pages:
+          type: integer
+    OnDemandCallRecording:
+      type: object
+      properties:
+        _links:
+          type: object
+          properties:
+            self:
+              type: object
+              properties:
+                href:
+                  type: string
+                  description: URL for the current recording
+                  example: 'https://api.vonage.com/t/vbc.prod/call_recording/api/accounts/123456/users/123456/call_recordings/123456'
+        call_direction:
+          type: string
+          description: Direction of the recorded call
+          example: "INBOUND"
+        call_id:
+          type: string
+          description: Call ID of the recorded call
+        caller_id:
+          type: string
+          description: Caller ID of the caller of the recorded call
+        cnam:
+          type: string
+          description: CNAM of the caller of the recorded call
+        dnis:
+          type: string
+          description: DNIS of the caller of the recorded call
+        download_url:
+          type: string
+          description: URL to download the recording. This URL requires authorization with your OAuth token.
+        duration:
+          type: integer
+          description: Duration of the recorded call in milliseconds
+          example: 60000
+        end:
+          type: string
+          format: date-time
+          description: End time of the recorded call
+          example: "2019-01-01T00:00:00+0000"
+        extensions:
+          type: array
+          items:
+            type: string
+          description: Extensions associated with the call recording
+          example: [999]
+        file_name:
+          type: string
+          description: File name of the call recording
+          example: "730048.11826465111463122315701.95a7584be856e34a582025d420c20d9d.1463122442148.mp3"
+        file_size_in_bytes:
+          type: integer
+          description: File size in bytes of the call recording
+          example: 100000
+        id:
+          type: integer
+          description: Unique identifier of the call recording
+          example: 123456
+        rule_ids:
+          type: array
+          description: Identifier of the call recording rule(s) that triggered the call recording
+          items:
+            type: integer
+        start:
+          type: string
+          format: date-time
+          description: Start time of the recorded call
+          example: "2019-01-01T00:00:00+0000"
+    OnDemandCallRecordingHalResponse:
+      $ref: "#/components/schemas/OnDemandCallRecording"
+    OnDemandCallRecordingsHalResponse:
+      type: object
+      properties:
+        _embedded:
+          properties:
+            recordings:
+              type: array
+              items:
+                $ref: "#/components/schemas/CompanyCallRecording"
+          description: A list of recording objects
+        _links:
+          type: object
+          properties:
+            first:
+              type: object
+              properties:
+                href:
+                  type: string
+                  description: URL for the first page of recordings
+                  example: 'https://api.vonage.com/t/vbc.prod/call_recording/api/accounts/123456/users/123456/call_recordings?page=0'
+            prev:
+              type: object
+              properties:
+                href:
+                  type: string
+                  description: URL for the previous page of recordings
+                  example: 'https://api.vonage.com/t/vbc.prod/call_recording/api/accounts/123456/users/123456/call_recordings?page=1'
+            self:
+              type: object
+              properties:
+                href:
+                  type: string
+                  description: URL for the current page of recordings
+                  example: 'https://api.vonage.com/t/vbc.prod/call_recording/api/accounts/123456/users/123456/call_recordings?page=2'
+            next:
+              type: object
+              properties:
+                href:
+                  type: string
+                  description: URL for the next page of recordings
+                  example: 'https://api.vonage.com/t/vbc.prod/call_recording/api/accounts/123456/users/123456/call_recordings?page=3'
+            last:
+              type: object
+              properties:
+                href:
+                  type: string
+                  description: URL for the last page of recordings
+                  example: 'https://api.vonage.com/t/vbc.prod/call_recording/api/accounts/123456/users/123456/call_recordings?page=4'
         page:
           type: integer
         page_size:
@@ -599,7 +722,15 @@ components:
       type: object
       properties:
         _links:
-          $ref: "#/components/schemas/PaginationSingle"
+          type: object
+          properties:
+            self:
+              type: object
+              properties:
+                href:
+                  type: string
+                  description: URL for the current export job
+                  example: 'https://api.vonage.com/t/vbc.prod/call_recording/api/accounts/123456/users/123456/call_recordings/jobs/5e667ef2-2860-4471-8813-320980a55c20'
         download_url:
           type: string
           description: URL to download the completed export job. This URL requires authorization with your OAuth token.
@@ -634,7 +765,43 @@ components:
                 $ref: "#/components/schemas/ExportJob"
           description: A list of job objects
         _links:
-          $ref: "#/components/schemas/Pagination"
+          type: object
+          properties:
+            first:
+              type: object
+              properties:
+                href:
+                  type: string
+                  description: URL for the first page of export jobs
+                  example: 'https://api.vonage.com/t/vbc.prod/call_recording/api/accounts/123456/users/123456/call_recordings/jobs?page=0'
+            prev:
+              type: object
+              properties:
+                href:
+                  type: string
+                  description: URL for the previous page of export jobs
+                  example: 'https://api.vonage.com/t/vbc.prod/call_recording/api/accounts/123456/users/123456/call_recordings/jobs?page=1'
+            self:
+              type: object
+              properties:
+                href:
+                  type: string
+                  description: URL for the current page of export jobs
+                  example: 'https://api.vonage.com/t/vbc.prod/call_recording/api/accounts/123456/users/123456/call_recordings/jobs?page=2'
+            next:
+              type: object
+              properties:
+                href:
+                  type: string
+                  description: URL for the next page of export jobs
+                  example: 'https://api.vonage.com/t/vbc.prod/call_recording/api/accounts/123456/users/123456/call_recordings/jobs?page=3'
+            last:
+              type: object
+              properties:
+                href:
+                  type: string
+                  description: URL for the last page of export jobs
+                  example: 'https://api.vonage.com/t/vbc.prod/call_recording/api/accounts/123456/users/123456/call_recordings/jobs?page=4'
         page:
           type: integer
         page_size:
@@ -649,7 +816,7 @@ components:
       type: object
       properties:
         call_direction:
-          description: Filter records by call direction
+          description: Filter recordings by call direction
           example: INBOUND
           type: string
           enum:
@@ -657,34 +824,34 @@ components:
             - OUTBOUND
             - INTRA_PBX
         call_id:
-          description: Filter records by Call ID
+          description: Filter recordings by Call ID
           type: string
         caller_id:
-          description: Filter records by Caller ID
+          description: Filter recordings by Caller ID
           type: string
         cnam:
-          description: Filter records by CNAM
+          description: Filter recordings by CNAM
           type: string
         dnis:
-          description: Filter records by DNIS
+          description: Filter recordings by DNIS
           type: string
         duration:gte:
-          description: Filter records by duration in milliseconds (greater than or equal to)
+          description: Filter recordings by duration in milliseconds (greater than or equal to)
           example: 60000
           type: integer
         duration:lte:
-          description: Filter records by duration in milliseconds (less than or equal to)
+          description: Filter recordings by duration in milliseconds (less than or equal to)
           example: 60000
           type: integer
         extension:
-          description: Filter records by extension number
+          description: Filter recordings by extension number
           example: 999
           type: string
         start:gte:
-          description: Filter records by start date (greater than or equal to)
+          description: Filter recordings by start date (greater than or equal to)
           example: "2019-01-01 00:00:00"
           type: string
         start:lte:
-          description: Filter records by start date (less than or equal to)
+          description: Filter recordings by start date (less than or equal to)
           example: "2019-01-01 00:00:00"
           type: string
