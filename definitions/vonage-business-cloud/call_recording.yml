@@ -413,6 +413,7 @@ components:
       name: duration:lte
       in: query
       description: Filter recordings by duration in milliseconds (less than or equal to)
+      example: 60000
       required: false
       schema:
         type: integer
@@ -420,6 +421,7 @@ components:
       name: duration:gte
       in: query
       description: Filter recordings by duration in milliseconds (greater than or equal to)
+      example: 60000
       required: false
       schema:
         type: integer
