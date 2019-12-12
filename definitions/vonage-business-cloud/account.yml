@@ -60,7 +60,7 @@ paths:
           schema:
             type: number
           description: The Vonage Business Cloud location ID
-          example: 123456
+          example: 327910
       responses:
         "200":
           description: Success
@@ -89,7 +89,7 @@ components:
       schema:
         type: number
       description: The Vonage Business Cloud account ID
-      example: 123456
+      example: 571700
 
   schemas:
     FirstHref:
@@ -168,7 +168,7 @@ components:
       properties:
         id:
           type: number
-          example: 123456
+          example: 571700
           description: Unique identifier of the account
         name:
           type: string
@@ -226,7 +226,7 @@ components:
       properties:
         id:
           type: number
-          example: 123456
+          example: 327910
           description: Unique identifier of the location
         name:
           type: string
