@@ -315,12 +315,12 @@ components:
       required: true
       schema:
         type: string
-      description: The account ID. You can use 'self' to refer to the authenticated user's account.
+      description: The Vonage Business Cloud account ID. You can use 'self' to refer to the authenticated user's account.
       example: 123456
     UserID:
       name: user_id
       in: path
-      description: The user ID. You can use 'self' to refer to the authenticated user.
+      description: The Vonage Business Cloud user ID. You can use 'self' to refer to the authenticated user.
       required: true
       example: 123456
       schema:
@@ -328,7 +328,7 @@ components:
     JobID:
       name: job_id
       in: path
-      description: job_id
+      description: The job ID
       required: true
       example: 7a688e12-99ee-4816-8385-b21b90583838
       schema:

@@ -59,7 +59,7 @@ paths:
           required: true
           schema:
             type: number
-          description: The location ID
+          description: The Vonage Business Cloud location ID
           example: 123456
       responses:
         "200":
@@ -88,7 +88,7 @@ components:
       required: true
       schema:
         type: number
-      description: The account ID
+      description: The Vonage Business Cloud account ID
       example: 123456
 
   schemas:
